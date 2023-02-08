@@ -1,8 +1,5 @@
 /*
 
-TemplateMo 559 Zay Shop
-
-https://templatemo.com/tm-559-zay-shop
 
 ---------------------------------------------
 Table of contents
@@ -113,6 +110,20 @@ body, ul, li, p, a, label, input, div {
 .brand-img:hover {
   filter: grayscale(0%);
   opacity: 1;
+}
+.block-small{
+  max-width: 600px;
+  margin: 0 auto;
+}
+a{
+  text-decoration: none;
+  color: #ffffff;
+}
+.block-small a{
+  text-decoration:none;
+  color: #59ab6e;
+  padding: 10px;
+  border-radius: 10px;
 }
 /* Carousel Hero */
 #template-mo-zay-hero-carousel .carousel-indicators li {
