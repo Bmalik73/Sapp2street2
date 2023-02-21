@@ -5,17 +5,18 @@ namespace App\Classe;
 use App\Entity\Carrier;
 use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class Cart
 {
-    private $session;
-    private $entityManager;
+    private SessionInterface $session;
+    private ManagerRegistry $managerRegistry;
 
-    public function __construct(EntityManagerInterface $entityManager, SessionInterface $session)
+    public function __construct(SessionInterface $session, ManagerRegistry $managerRegistry)
     {
         $this->session = $session;
-        $this->entityManager = $entityManager;
+        $this->managerRegistry = $managerRegistry;
     }
 
     public function add($id)
@@ -69,7 +70,7 @@ class Cart
 
         if ($this->get()) {
             foreach ($this->get() as $id => $quantity) {
-                $product_object = $this->entityManager->getRepository(Product::class)->findOneById($id);
+                $product_object = $this->managerRegistry->getRepository(Product::class)->findOneBy(['id'=>$id]);
 
                 if (!$product_object) {
                     $this->delete($id);
