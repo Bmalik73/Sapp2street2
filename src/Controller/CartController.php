@@ -23,7 +23,7 @@ class CartController extends AbstractController
     public function index(Cart $cart): Response
     {
         return $this->render('cart/index.html.twig', [
-            'cart' => '$Cart->getFull()',
+            'cart' => $cart->getFull(),
         ]);
     }
 
@@ -33,7 +33,7 @@ class CartController extends AbstractController
     {
         $cart->add($id);
 
-        return $this->redirectToRoute('cart');
+        return $this->redirectToRoute('app_cart');
     }
 
 
@@ -42,7 +42,7 @@ class CartController extends AbstractController
     {
         $cart->remove();
 
-        return $this->redirectToRoute('products');
+        return $this->redirectToRoute('app_product');
     }
 
 
@@ -51,7 +51,7 @@ class CartController extends AbstractController
     {
         $cart->delete($id);
 
-        return $this->redirectToRoute('cart');
+        return $this->redirectToRoute('app_cart');
     }
 
 
@@ -60,6 +60,6 @@ class CartController extends AbstractController
     {
         $cart->decrease($id);
 
-        return $this->redirectToRoute('cart');
+        return $this->redirectToRoute('app_cart');
     }
 }

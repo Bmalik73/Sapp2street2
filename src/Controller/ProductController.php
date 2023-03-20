@@ -19,9 +19,9 @@ class ProductController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    /**
-     * @Route("/nos-produits", name="app_products")
-     */
+
+    #[Route("/nos-produits", name:"app_products")]
+
     public function index(Request $request)
     {
         $search = new Search();
@@ -50,7 +50,7 @@ class ProductController extends AbstractController
         $products = $this->entityManager->getRepository(Product::class)->findByIsBest(1);
 
         if (!$product) {
-            return $this->redirectToRoute('products');
+            return $this->redirectToRoute('app_products');
         }
 
         return $this->render('product/show.html.twig', [
